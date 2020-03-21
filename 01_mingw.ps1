@@ -1,3 +1,7 @@
+# see https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#using-a-specific-shell
+# GitHub changes the default to $ErrorActionPreference = 'stop'
+$ErrorActionPreference = "Continue"
+
 $WorkDir = "build\mingw"
 
 Function Get-Mingw {
@@ -22,7 +26,7 @@ Function Update-Mingw {
 }
 
 Function Get-MingwPackage($Name) {
-    & "$WorkDir\bin\mingw-get.exe" install $Name
+    & "$WorkDir\bin\mingw-get.exe" install $Name 2>&1
 }
 
 Function Main() {
