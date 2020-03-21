@@ -22,7 +22,7 @@ Function Update-Mingw {
 }
 
 Function Get-MingwPackage($Name) {
-    & "$WorkDir\bin\mingw-get.exe" install --reinstall $Name
+    & "$WorkDir\bin\mingw-get.exe" install $Name
 }
 
 Function Main() {
