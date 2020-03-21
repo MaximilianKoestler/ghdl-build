@@ -20,3 +20,7 @@ jobs:
     - name: Download and setup MinGW
       shell: powershell
       run: ./01_mingw.ps1
+
+    - name: Build GHDL
+      shell: powershell
+      run: ./02_build_ghdl.ps1
