@@ -1,7 +1,10 @@
-# Step 1: Download Code
+# GHDL Build under Windows
 
-## GHDL
-https://api.github.com/repos/ghdl/ghdl/tarball
+This repository contains automation scripts to build GHDL and the VSCode extension for Windows.
 
-## GHDL Language Server
-https://api.github.com/repos/ghdl/ghdl-language-server/tarball
+**Everything in this repository is currently WIP**
+
+GitHub Actions are set up to autmatically run the scripts:
+https://github.com/MaximilianKoestler/ghdl-build/actions?query=workflow%3Abuild
+
+Later, they will also bundle the releases.
