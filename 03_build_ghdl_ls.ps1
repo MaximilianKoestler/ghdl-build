@@ -6,12 +6,8 @@ Function Install-MingwPath {
     Write-Host $env:Path
 }
 
-Function Invoke-Configure($Prefix) {
-    & "sh" configure --prefix=$Prefix
-}
-
-Function Invoke-Make {
-    & "make"
+Function Invoke-Pip {
+    # ...
 }
 
 Function Main() {
@@ -21,8 +17,7 @@ Function Main() {
     Install-MingwPath
 
     Push-Location "build\ghdl"
-    Invoke-Configure "$BaseDir\dist"
-    # Invoke-Make
+    Invoke-Pip
     Pop-Location
 
     $Env:Path = $OriginalPath

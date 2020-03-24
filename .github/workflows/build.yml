@@ -21,6 +21,10 @@ jobs:
       shell: powershell
       run: ./01_mingw.ps1
 
-    - name: Build GHDL
+    - name: Prepare Python environment
       shell: powershell
-      run: ./02_build_ghdl.ps1
+      run: ./02_python.ps1
+
+    - name: Build GHDL Language Server
+      shell: powershell
+      run: ./03_build_ghdl_ls.ps1
