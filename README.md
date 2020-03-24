@@ -5,10 +5,17 @@
 
 # GHDL Build under Windows
 
-This repository contains automation scripts to build [GHDL](https://github.com/ghdl/ghdl) and the [VSCode extension](https://github.com/ghdl/ghdl-language-server) for Windows.
+This repository contains automation scripts to build the [GHDL](https://github.com/ghdl/ghdl) Language Server and the [VSCode extension](https://github.com/ghdl/ghdl-language-server) for Windows.
 
 **Everything in this repository is currently WIP**
 
 [GitHub Actions](https://github.com/MaximilianKoestler/ghdl-build/actions?query=workflow%3Abuild) are set up to autmatically run the scripts.
 
 Later, they will also bundle the releases.
+
+# Building Locally
+Setup environment variables:
+```powershell
+$env:GhdlPythonPath = "..."
+$env:AppveyorToken = "..."
+```

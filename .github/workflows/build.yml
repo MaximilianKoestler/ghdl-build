@@ -25,6 +25,12 @@ jobs:
       shell: powershell
       run: ./02_python.ps1
 
+    - name: Download latest GHDL build
+      shell: powershell
+      env:
+        AppveyorToken: ${{ secrets.APPVEYOR_TOKEN }}
+      run: ./03_get_ghdl_artifacts.ps1
+
     - name: Build GHDL Language Server
       shell: powershell
-      run: ./03_build_ghdl_ls.ps1
+      run: ./04_build_ghdl_ls.ps1
