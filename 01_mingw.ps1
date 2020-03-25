@@ -32,8 +32,8 @@ Function Get-MingwPackage($Name) {
 Function Main() {
     Get-Mingw
     Update-Mingw
-    Get-MingwPackage "msys-base"
-    Get-MingwPackage "gcc-ada"
+    Get-MingwPackage "mingw32-libgcc"
+    Get-MingwPackage "mingw32-libgnat"
 }
 
 Main
