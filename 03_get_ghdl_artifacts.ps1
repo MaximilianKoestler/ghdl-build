@@ -48,8 +48,7 @@ Function Expand-Artifacts($Artifacts) {
 }
 
 Function Main() {
-    $artifacts = Get-Artifacts
-    $Artifacts = "build\ghdl-master-1039-mingw32-mcode.zip"
+    $Artifacts = Get-Artifacts
     Expand-Artifacts $Artifacts
 }
 
