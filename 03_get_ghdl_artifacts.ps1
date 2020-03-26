@@ -38,6 +38,7 @@ Function Get-Artifacts {
 
 Function Expand-Artifacts($Artifacts) {
     $Destination = "build\ghdl_artifacts"
+    Remove-Item -Recurse -Force $Destination -ErrorAction Ignore
     Expand-Archive -LiteralPath $artifacts -DestinationPath $Destination
 
     # fix directory layout
