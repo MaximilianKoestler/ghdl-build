@@ -1,3 +1,7 @@
+# see https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#using-a-specific-shell
+# GitHub changes the default to $ErrorActionPreference = 'stop'
+$ErrorActionPreference = "Continue"
+
 Function Install-MingwPath {
     $MingwBase = "$(Get-Location)\build\mingw"
     $Env:Path += ";$MingwBase\bin"
@@ -28,7 +32,7 @@ Function Main() {
     Write-Host $Env:Path
 
     # Test that we can run gldl-ls
-    & "build\python\Scripts\ghdl-ls.exe" --disp-config
+    & "build\python\Scripts\ghdl-ls.exe" --disp-config 2>&1
 
     $Env:Path = $OriginalPath
 }
