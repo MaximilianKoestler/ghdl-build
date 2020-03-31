@@ -6,11 +6,13 @@ ghdl_dlls = [(str(dll.resolve()), "lib") for dll in ghdl_dir.glob("*.dll")]
 mingw_dir = Path("build/mingw/bin")
 mingw_dlls = [(str(dll.resolve()), ".") for dll in mingw_dir.glob("*.dll")]
 
+datas = [(str(ghdl_dir.resolve()), "lib")]
+
 block_cipher = None
 a = Analysis(
     ["ghdl-ls.py"],
     binaries=ghdl_dlls + mingw_dlls,
-    datas=None,
+    datas=datas,
     hiddenimports=[],
     hookspath=None,
     runtime_hooks=None,
