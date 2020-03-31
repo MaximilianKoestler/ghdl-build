@@ -10,6 +10,7 @@ Function Get-PythonLocation {
 Function Install-Venv($Python) {
     & "$Python\python.exe" -m venv build\python
     & "build\python\Scripts\python.exe" -m pip install --upgrade pip
+    & "build\python\Scripts\python.exe" -m pip install PyInstaller
 }
 
 Function Main() {

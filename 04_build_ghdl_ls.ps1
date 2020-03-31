@@ -33,6 +33,10 @@ Function Main() {
 
     # Test that we can run gldl-ls
     & "build\python\Scripts\ghdl-ls.exe" --disp-config 2>&1
+    & "build\python\Scripts\pyinstaller.exe" python\ghdl-ls.spec `
+        --workpath build\pyinstaller\build `
+        --distpath build\pyinstaller\dist `
+        --onefile
 
     $Env:Path = $OriginalPath
 }
