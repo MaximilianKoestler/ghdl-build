@@ -33,3 +33,11 @@ exe = EXE(
     runtime_tmpdir=None,
     console=True,
 )
+coll = COLLECT(exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    name="ghdl-ls",
+    strip=False,
+    upx=False,
+)

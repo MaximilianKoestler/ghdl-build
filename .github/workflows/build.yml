@@ -37,8 +37,8 @@ jobs:
       shell: powershell
       run: ./04_build_ghdl_ls.ps1
 
-    - name: Store language server binary in artifacts
+    - name: Store language server binaries in artifacts
       uses: actions/upload-artifact@v1
       with:
         name: ghdl-ls
-        path: ./build/pyinstaller/dist/ghdl-ls.exe
+        path: ./build/pyinstaller/dist/ghdl-ls
