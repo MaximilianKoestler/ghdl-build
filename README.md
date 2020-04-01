@@ -5,7 +5,8 @@
 
 # GHDL Build under Windows
 
-This repository contains automation scripts to build the [GHDL](https://github.com/ghdl/ghdl) Language Server and the [VSCode extension](https://github.com/ghdl/ghdl-language-server) for Windows.
+This repository contains automation scripts to build the [GHDL](https://github.com/ghdl/ghdl) Language Server as a PyInstaller binary for Windows.
+The goal is to have a simple deployment of the VSCode extension for windows.
 
 **Everything in this repository is currently WIP**
 
