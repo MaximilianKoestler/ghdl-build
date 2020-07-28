@@ -1,0 +1,40 @@
+--- "a/build/ghdl-language-server/vscode-client/extension.ts"
++++ "b/build/ghdl-language-server/vscode-client/extension.ts"
+@@ -3,6 +3,7 @@
+  * Licensed under the MIT License. See License.txt in the project root for license information.
+  * ------------------------------------------------------------------------------------------ */
+ 
++import * as path from 'path';
+ import * as vscode from 'vscode';
+ 
+ import {
+@@ -78,18 +79,26 @@ async function instantiate_entity() {
+ }
+ 
+ export function activate(context: vscode.ExtensionContext) {
+-	let serverPath = "ghdl-ls";
++	let serverPath = path.join(context.extensionPath, "bin", "ghdl-ls");
++
++	let executableOptions = {
++		env: {
++			GHDL_PREFIX: path.join(context.extensionPath, "bin", "lib", "ghdl")
++		}
++	}
+ 
+ 	// If the extension is launched in debug mode then the debug server options are used
+ 	// Otherwise the run options are used
+ 	let serverOptions: ServerOptions = {
+ 		run: {
+ 			command: serverPath,
+-			args: ['-v']
++			args: ['-v'],
++			options: executableOptions
+ 		},
+ 		debug: {
+ 			command: serverPath,
+-			args: ['-v', '--trace-file=vhdl-ls.trace']
++			args: ['-v', '--trace-file=vhdl-ls.trace'],
++			options: executableOptions
+ 		}
+ 	};
+ 
