@@ -1,9 +1,9 @@
 from pathlib import Path
 
-ghdl_dir = Path("build/ghdl_artifacts/lib")
+ghdl_dir = Path("windows/build/ghdl_artifacts/lib")
 ghdl_dlls = [(str(dll.resolve()), "lib") for dll in ghdl_dir.glob("*.dll")]
 
-mingw_dir = Path("build/mingw/bin")
+mingw_dir = Path("windows/build/mingw/bin")
 mingw_dlls = [(str(dll.resolve()), ".") for dll in mingw_dir.glob("*.dll")]
 
 datas = [(str(ghdl_dir.resolve()), "lib")]

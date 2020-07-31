@@ -30,14 +30,14 @@ Function Get-Artifacts {
     $Artifacts = Invoke-RestMethod -Method Get -Uri "$ApiUrl/buildjobs/$JobId/artifacts" -Headers $Headers
     $ArtifactFileName = $Artifacts[0].fileName
 
-    $LocalArtifactPath = "build\$ArtifactFileName"
+    $LocalArtifactPath = "windows\build\$ArtifactFileName"
     Invoke-RestMethod -Method Get -Uri "$ApiUrl/buildjobs/$JobId/artifacts/$ArtifactFileName" -OutFile $LocalArtifactPath -Headers @{ "Authorization" = "Bearer $Token" }
 
     return $LocalArtifactPath
 }
 
 Function Expand-Artifacts($Artifacts) {
-    $Destination = "build\ghdl_artifacts"
+    $Destination = "windows\build\ghdl_artifacts"
     Remove-Item -Recurse -Force $Destination -ErrorAction Ignore
     Expand-Archive -LiteralPath $artifacts -DestinationPath $Destination
 

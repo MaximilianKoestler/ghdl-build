@@ -4,7 +4,7 @@ Function Get-Repository($Location, $Destination) {
 
     # cleanup
     Remove-Item -Recurse -Force $Destination -ErrorAction Ignore
-    New-Item -Name $Destination -ItemType "directory" | Out-Null
+    New-Item -Path $Destination -ItemType "directory" | Out-Null
 
     # download and extract
     $DownloadLocation = New-TemporaryFile
@@ -18,8 +18,10 @@ Function Get-Repository($Location, $Destination) {
 }
 
 Function Main() {
-    Get-Repository "ghdl/ghdl" "build\ghdl"
-    Get-Repository "ghdl/ghdl-language-server" "build\ghdl-language-server"
+    $BuildDir = Join-Path -Path $PSScriptRoot -ChildPath "build"
+
+    Get-Repository "ghdl/ghdl" $(Join-Path -Path $BuildDir -ChildPath "ghdl")
+    Get-Repository "ghdl/ghdl-language-server" $(Join-Path -Path $BuildDir -ChildPath "ghdl-language-server")
 }
 
 Main

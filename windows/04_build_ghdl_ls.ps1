@@ -3,13 +3,13 @@
 $ErrorActionPreference = "Continue"
 
 Function Install-MingwPath {
-    $MingwBase = "$(Get-Location)\build\mingw"
+    $MingwBase = "$PSScriptRoot\build\mingw"
     $Env:Path += ";$MingwBase\bin"
     $Env:Path += ";$MingwBase\msys\1.0\bin"
 }
 
 Function Install-GhdlPath {
-    $GhdlBase = "$(Get-Location)\build\ghdl_artifacts"
+    $GhdlBase = "$PSScriptRoot\build\ghdl_artifacts"
     $Env:Path += ";$GhdlBase\bin"
     $Env:Path += ";$GhdlBase\lib"
 }
@@ -19,9 +19,9 @@ Function Invoke-Pip($PythonPath) {
 }
 
 Function Main() {
-    $BaseDir = Get-Location
-    Push-Location "build\ghdl\python"
-    Invoke-Pip("$BaseDir\build\python\Scripts\")
+    $BuildDir = Join-Path -Path $PSScriptRoot -ChildPath "build"
+    Push-Location "$BuildDir\ghdl\python"
+    Invoke-Pip("$BuildDir\python\Scripts\")
     Pop-Location
 
     $OriginalPath = $Env:Path
@@ -31,10 +31,11 @@ Function Main() {
     Install-GhdlPath
     Write-Host $Env:Path
 
-    # Test that we can run gldl-ls
-    & "build\python\Scripts\pyinstaller.exe" python\ghdl-ls.spec `
-        --workpath build\pyinstaller\build `
-        --distpath build\pyinstaller\dist
+    & "$BuildDir\python\Scripts\pyinstaller.exe" "$PSScriptRoot\python\ghdl-ls.spec" `
+        --workpath "$BuildDir\pyinstaller\build" `
+        --distpath "$BuildDir\pyinstaller\dist"
+
+    # TODO: Test that we can run gldl-ls
 
     $Env:Path = $OriginalPath
 }

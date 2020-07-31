@@ -2,7 +2,7 @@
 # GitHub changes the default to $ErrorActionPreference = 'stop'
 $ErrorActionPreference = "Continue"
 
-$WorkDir = "build\mingw"
+$WorkDir = Join-Path -Path $PSScriptRoot -ChildPath "build\mingw"
 
 Function Get-Mingw {
     $Url = "https://osdn.net/frs/redir.php?m=dotsrc&f=mingw%2F68260%2Fmingw-get-0.6.3-mingw32-pre-20170905-1-bin.zip"
@@ -10,7 +10,7 @@ Function Get-Mingw {
 
     # cleanup
     Remove-Item -Recurse -Force $WorkDir -ErrorAction Ignore
-    New-Item -Name $WorkDir -ItemType "directory" | Out-Null
+    New-Item -Path $WorkDir -ItemType "directory" | Out-Null
 
     # download and extract
     $DownloadLocation = "$(New-TemporaryFile).zip"

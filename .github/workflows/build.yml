@@ -17,38 +17,38 @@ jobs:
 
     - name: Download and extract repositories
       shell: powershell
-      run: ./00_get_code.ps1
+      run: ./windows/00_get_code.ps1
 
     - name: Download and setup MinGW
       shell: powershell
-      run: ./01_mingw.ps1
+      run: ./windows/01_mingw.ps1
 
     - name: Prepare Python environment
       shell: powershell
-      run: ./02_python.ps1
+      run: ./windows/02_python.ps1
 
     - name: Download latest GHDL build
       shell: powershell
       env:
         AppveyorToken: ${{ secrets.APPVEYOR_TOKEN }}
-      run: ./03_get_ghdl_artifacts.ps1
+      run: ./windows/03_get_ghdl_artifacts.ps1
 
     - name: Build GHDL Language Server
       shell: powershell
-      run: ./04_build_ghdl_ls.ps1
+      run: ./windows/04_build_ghdl_ls.ps1
 
     - name: Build Visual Studio Code extension
       shell: powershell
-      run: ./05_build_vsix.ps1
+      run: ./windows/05_build_vsix.ps1
 
     - name: Store language server binaries in artifacts
       uses: actions/upload-artifact@v1
       with:
         name: ghdl-ls
-        path: ./build/pyinstaller/dist/ghdl-ls
+        path: ./windows/build/pyinstaller/dist/ghdl-ls
 
     - name: Store Visual Studio Code extension in artifacts
       uses: actions/upload-artifact@v1
       with:
         name: vhdl-lsp
-        path: ./build/vhdl-lsp-0.1.0-dev.vsix
+        path: ./windows/build/vhdl-lsp-0.1.0-dev.vsix
