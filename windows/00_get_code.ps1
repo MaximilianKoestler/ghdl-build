@@ -1,3 +1,5 @@
+$BuildDir = "$PSScriptRoot\build"
+
 Function Get-Repository($Location, $Destination) {
     $Url = "https://api.github.com/repos/$Location/tarball/master"
     Write-Host "Downloading and extracting from $Url to $Destination"
@@ -18,10 +20,8 @@ Function Get-Repository($Location, $Destination) {
 }
 
 Function Main() {
-    $BuildDir = Join-Path -Path $PSScriptRoot -ChildPath "build"
-
-    Get-Repository "ghdl/ghdl" $(Join-Path -Path $BuildDir -ChildPath "ghdl")
-    Get-Repository "ghdl/ghdl-language-server" $(Join-Path -Path $BuildDir -ChildPath "ghdl-language-server")
+    Get-Repository "ghdl/ghdl" "$BuildDir\ghdl"
+    Get-Repository "ghdl/ghdl-language-server" "$BuildDir\ghdl-language-server"
 }
 
 Main

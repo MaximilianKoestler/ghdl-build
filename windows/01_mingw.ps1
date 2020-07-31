@@ -2,7 +2,7 @@
 # GitHub changes the default to $ErrorActionPreference = 'stop'
 $ErrorActionPreference = "Continue"
 
-$WorkDir = Join-Path -Path $PSScriptRoot -ChildPath "build\mingw"
+$WorkDir = "$PSScriptRoot\build\mingw"
 
 Function Get-Mingw {
     $Url = "https://osdn.net/frs/redir.php?m=dotsrc&f=mingw%2F68260%2Fmingw-get-0.6.3-mingw32-pre-20170905-1-bin.zip"
